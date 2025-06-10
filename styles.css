@@ -85,16 +85,16 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    padding: 1rem;
+    padding: 2rem;
     transition: background-color 0.3s ease;
 }
 
 .container {
     background-color: var(--container-bg);
-    padding: 1.5rem;
+    padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 10px var(--shadow-color);
-    width: 95%;
+    width: 100%;
     max-width: 600px;
     border: 2px solid var(--container-border);
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
@@ -103,50 +103,48 @@ body {
 h1 {
     color: var(--header-color);
     text-align: center;
-    margin-bottom: 1rem;
-    letter-spacing: 1.5px;
-    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+    font-size: 2rem;
     transition: color 0.3s ease;
 }
 
 .input-section {
     display: flex;
-    flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .input-section input[type="text"] {
-    flex: 1 1 55%;
-    padding: 0.7rem;
+    flex: 2;
+    padding: 0.8rem;
     border: 1px solid var(--input-border);
     border-radius: 5px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     background: var(--input-bg);
     color: var(--input-color);
     transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .input-section input[type="date"] {
-    flex: 1 1 35%;
-    padding: 0.7rem;
+    flex: 1;
+    padding: 0.8rem;
     border: 1px solid var(--input-border);
     border-radius: 5px;
     background: var(--input-bg);
     color: var(--input-color);
-    font-size: 0.9rem;
+    font-size: 1rem;
     transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 button {
-    flex: 1 1 auto;
-    padding: 0.7rem 1rem;
+    padding: 0.8rem 1.5rem;
     background-color: var(--button-bg);
     color: var(--button-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 1rem;
     transition: background-color 0.3s ease, color 0.3s ease;
     font-weight: 600;
 }
@@ -161,7 +159,7 @@ button:hover {
 
 .task-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     padding: 1rem;
     background-color: var(--task-item-bg);
     border-radius: 5px;
@@ -305,7 +303,7 @@ button:hover {
     font-size: 1rem;
     transition: background 0.3s ease, color 0.3s ease;
     margin-left: auto;
-    align-self: flex-start;
+    align-self: center;
 }
 
 .task-item .delete-btn:hover {
@@ -356,57 +354,5 @@ button:hover {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Media query for smaller screens */
-@media (max-width: 480px) {
-    .input-section {
-        flex-direction: column;
-    }
-
-    .input-section input[type="text"],
-    .input-section input[type="date"],
-    .input-section button {
-        flex: 1 1 100%;
-    }
-
-    .appearance-section,
-    .clear-all-btn {
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 0.5rem;
-    }
-
-    .appearance-section select,
-    .clear-all-btn {
-        width: 100%;
-    }
-
-    .task-item {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-
-    .task-item input[type="checkbox"] {
-        margin-right: 0.5rem;
-    }
-
-    .task-content {
-        flex: 1 1 100%;
-    }
-
-    .edit-btn,
-    .save-btn,
-    .cancel-btn,
-    .delete-btn {
-        flex: 1 1 auto;
-        margin-left: 0;
-        margin-right: 0;
-        width: 100%;
-    }
-
-    .task-date-display {
-        margin-left: 0;
-    }
 }
 
