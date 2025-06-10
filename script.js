@@ -153,14 +153,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to render all tasks
     const renderTasks = (newTaskId = null) => {
         taskList.innerHTML = '';
-        tasks.forEach(task => {
+        
+        const incompleteTasks = tasks.filter(task => !task.completed);
+        const completedTasks = tasks.filter(task => task.completed);
+
+        // Render incomplete tasks first
+        incompleteTasks.forEach(task => {
             const taskElement = createTaskElement(task);
             if (newTaskId && task.id === newTaskId) {
                 taskElement.classList.add('task-item-new');
+                taskElement.classList.add('fade-in');
                 setTimeout(() => {
                     taskElement.classList.remove('task-item-new');
                 }, 700);
             }
+            taskList.appendChild(taskElement);
+        });
+
+        // Then render completed tasks
+        completedTasks.forEach(task => {
+            const taskElement = createTaskElement(task);
             taskList.appendChild(taskElement);
         });
     };
@@ -209,9 +221,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to delete a task
     const deleteTask = (taskId) => {
-        tasks = tasks.filter(task => task.id !== taskId);
-        saveTasks();
-        renderTasks();
+        const taskElement = document.querySelector(`[data-task-id="${taskId}"]`);
+        if (taskElement) {
+            taskElement.classList.add('fade-out');
+            taskElement.addEventListener('animationend', () => {
+                tasks = tasks.filter(task => task.id !== taskId);
+                saveTasks();
+                renderTasks();
+            }, { once: true });
+        } else {
+            tasks = tasks.filter(task => task.id !== taskId);
+            saveTasks();
+            renderTasks();
+        }
     };
 
     // Event listeners
