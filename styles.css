@@ -244,15 +244,16 @@ button:hover {
 .save-btn,
 .cancel-btn,
 .delete-btn {
-    padding: 0.5rem 1rem;
+    padding: 0.2rem 0.4rem;
     border: none;
     border-radius: 5px;
-    font-size: 0.9rem;
+    font-size: 0.65rem;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
-    flex: 1 1 auto;
-    min-width: 80px;
+    flex: 0 0 auto;
+    min-width: unset;
+    max-width: 50px;
 }
 
 .edit-btn,
@@ -374,8 +375,8 @@ button:hover {
     .delete-btn,
     .clear-all-btn,
     .appearance-section select {
-        font-size: 0.85rem;
-        padding: 0.6rem 0.8rem;
+        font-size: 0.65rem;
+        padding: 0.3rem 0.6rem;
     }
 }
 
@@ -402,37 +403,40 @@ button:hover {
     }
 
     .task-item {
-        flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
     }
 
     .task-item input[type="checkbox"] {
-        margin-right: 0;
-        margin-bottom: 0.5rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0;
     }
 
     .task-content {
-        flex: 1 1 100%;
+        flex: 1 1 0;
+        min-width: 0;
+        word-break: break-word;
+        overflow-wrap: break-word;
     }
 
     .edit-btn,
     .save-btn,
     .cancel-btn,
     .delete-btn {
-        flex: 1 1 100%;
-        margin-left: 0;
-        margin-right: 0;
-        min-width: 0;
+        flex: 0 0 auto;
+        min-width: unset;
+        max-width: 50px;
+        padding: 0.2rem 0.4rem;
+        font-size: 0.65rem;
     }
 
     .edit-btn,
     .save-btn {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0;
     }
 
     .delete-btn {
-        margin-left: 0;
+        margin-left: auto;
     }
 
     .task-date-display {
