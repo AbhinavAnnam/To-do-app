@@ -154,11 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderTasks = (newTaskId = null) => {
         taskList.innerHTML = '';
         
-        const incompleteTasks = tasks.filter(task => !task.completed);
-        const completedTasks = tasks.filter(task => task.completed);
-
-        // Render incomplete tasks first
-        incompleteTasks.forEach(task => {
+        tasks.forEach(task => {
             const taskElement = createTaskElement(task);
             if (newTaskId && task.id === newTaskId) {
                 taskElement.classList.add('task-item-new');
@@ -167,12 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     taskElement.classList.remove('task-item-new');
                 }, 700);
             }
-            taskList.appendChild(taskElement);
-        });
-
-        // Then render completed tasks
-        completedTasks.forEach(task => {
-            const taskElement = createTaskElement(task);
             taskList.appendChild(taskElement);
         });
     };
