@@ -1,358 +1,43 @@
-:root {
-    --bg-color: #f5f5f5;
-    --container-bg: #fff;
-    --container-border: #A0AF84;
-    --shadow-color: rgba(74, 102, 112, 0.08);
-    --header-color: #4A6670;
-    --input-border: rgba(74, 102, 112, 0.2);
-    --input-bg: #C3B59F;
-    --input-color: #4A6670;
-    --input-focus-border: #A0AF84;
-    --input-focus-shadow: rgba(160, 175, 132, 0.3);
-    --button-bg: #A0AF84;
-    --button-color: #fff;
-    --button-hover-bg: #668F80;
-    --task-item-bg: #668F80;
-    --task-item-hover-bg: #f0f0f0;
-    --task-item-completed-bg: #e8f5e9;
-    --task-item-completed-text: #666;
-    --task-item-highlight-bg: #b7d3c6;
-    --checkbox-accent: #4A6670;
-    --delete-btn-bg: #ff5252;
-    --delete-btn-hover-bg: #ff1744;
-    --edit-btn-bg: #668F80;
-    --edit-btn-hover-bg: #4A6670;
-    --save-btn-bg: #A0AF84;
-    --save-btn-hover-bg: #799a6c;
-    --cancel-btn-bg: #4A6670;
-    --cancel-btn-hover-bg: #3b505c;
-    --task-date-color: #4A6670;
-    --light-red-bg: #ff8a80;
-    --clear-all-hover-bg: #e57373;
-}
-
-.dark-mode {
-    --bg-color: #1a1a1a;
-    --container-bg: #222222;
-    --container-border: #444444;
-    --shadow-color: rgba(0, 0, 0, 0.5);
-    --header-color: #e0e0e0;
-    --input-border: rgba(220, 220, 220, 0.2);
-    --input-bg: #1c1c1c;
-    --input-color: #f0f0f0;
-    --input-focus-border: #666666;
-    --input-focus-shadow: rgba(102, 102, 102, 0.4);
-    --button-bg: #444444;
-    --button-color: #ffffff;
-    --button-hover-bg: #555555;
-    --task-item-bg: #2a2a2a;
-    --task-item-hover-bg: #3a3a3a;
-    --task-item-completed-bg: #333333;
-    --task-item-completed-text: #aaaaaa;
-    --task-item-highlight-bg: #4a4a4a;
-    --checkbox-accent: #666666;
-    --delete-btn-bg: #cc3333;
-    --delete-btn-hover-bg: #aa2222;
-    --edit-btn-bg: #3a3a3a;
-    --edit-btn-hover-bg: #4a4a4a;
-    --save-btn-bg: #228b22;
-    --save-btn-hover-bg: #1a6f1a;
-    --cancel-btn-bg: #555555;
-    --cancel-btn-hover-bg: #444444;
-    --task-date-color: #bbd0e0;
-    --light-red-bg: #b03a3a;
-    --clear-all-hover-bg: #962828;
-}
-
-/* Ensure the calendar icon is visible in dark mode */
-.dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1) brightness(100%);
-}
-
-.dark-mode .task-date-edit::-webkit-calendar-picker-indicator {
-    filter: invert(1) brightness(100%);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: var(--bg-color);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-    transition: background-color 0.3s ease;
-}
-
-.container {
-    background-color: var(--container-bg);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px var(--shadow-color);
-    width: 100%;
-    max-width: 600px;
-    border: 2px solid var(--container-border);
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-h1 {
-    color: var(--header-color);
-    text-align: center;
-    margin-bottom: 1.5rem;
-    letter-spacing: 2px;
-    font-size: 2rem;
-    transition: color 0.3s ease;
-}
-
-.input-section {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.input-section input[type="text"] {
-    flex: 2;
-    padding: 0.8rem;
-    border: 1px solid var(--input-border);
-    border-radius: 5px;
-    font-size: 1rem;
-    background: var(--input-bg);
-    color: var(--input-color);
-    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-}
-
-.input-section input[type="date"] {
-    flex: 1;
-    padding: 0.8rem;
-    border: 1px solid var(--input-border);
-    border-radius: 5px;
-    background: var(--input-bg);
-    color: var(--input-color);
-    font-size: 1rem;
-    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-}
-
-button {
-    padding: 0.8rem 1.5rem;
-    background-color: var(--button-bg);
-    color: var(--button-color);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-weight: 600;
-}
-
-button:hover {
-    background-color: var(--button-hover-bg);
-}
-
-#taskList {
-    list-style: none;
-}
-
-.task-item {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    background-color: var(--task-item-bg);
-    border-radius: 5px;
-    margin-bottom: 0.5rem;
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-    color: var(--button-color);
-    box-shadow: 0 1px 4px var(--shadow-color);
-    word-break: break-word;
-    flex-wrap: nowrap;
-    gap: 1rem;
-}
-
-.task-item:hover {
-    background-color: var(--task-item-hover-bg);
-}
-
-.task-item.completed {
-    background-color: var(--task-item-completed-bg);
-    text-decoration: line-through;
-    color: var(--task-item-completed-text);
-    opacity: 0.7;
-}
-
-.task-item input[type="checkbox"] {
-    margin-right: 1rem;
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-    accent-color: var(--checkbox-accent);
-    display: block;
-}
-
-.task-content {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 0;
-    min-width: 0;
-    word-break: break-word;
-    gap: 0.3em;
-}
-
-.task-text-display {
-    display: block;
-    flex: 1;
-}
-
-.task-date-display {
-    display: block;
-    flex: 1;
-    font-size: 0.95em;
-    color: var(--task-date-color);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-.task-text-edit,
-.task-date-edit {
-    padding: 0.5rem;
-    border: 1px solid var(--input-border);
-    border-radius: 5px;
-    font-size: 1rem;
-    width: 100%;
-    margin-bottom: 0.3em;
-    background-color: var(--input-bg);
-    color: var(--input-color);
-    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-}
-
-.task-text-edit:focus,
-.task-date-edit:focus {
-    outline: none;
-    border-color: var(--input-focus-border);
-    box-shadow: 0 0 0 2px var(--input-focus-shadow);
-}
-
-.hidden {
-    display: none !important;
-}
-
-.edit-btn {
-    background-color: var(--edit-btn-bg);
-    color: var(--button-color);
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    margin-left: auto;
-    margin-right: 0.5rem;
-    align-self: flex-start;
-}
-
-.edit-btn:hover {
-    background-color: var(--edit-btn-hover-bg);
-}
-
-.save-btn {
-    background-color: var(--save-btn-bg);
-    color: var(--button-color);
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    margin-left: auto;
-    margin-right: 0.5rem;
-    align-self: flex-start;
-}
-
-.save-btn:hover {
-    background-color: var(--save-btn-hover-bg);
-}
-
-.cancel-btn {
-    background-color: var(--cancel-btn-bg);
-    color: var(--button-color);
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    align-self: flex-start;
-}
-
-.cancel-btn:hover {
-    background-color: var(--cancel-btn-hover-bg);
-}
-
-.task-item .delete-btn {
-    background-color: var(--delete-btn-bg);
-    color: var(--button-color);
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: background 0.3s ease, color 0.3s ease;
-    margin-left: auto;
-    align-self: center;
-}
-
-.task-item .delete-btn:hover {
-    background-color: var(--delete-btn-hover-bg);
-}
-
-.task-item-new {
-    background-color: var(--task-item-highlight-bg) !important;
-    transition: background-color 0.7s;
-}
-
-.clear-all-btn {
-    margin: 0;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    background-color: var(--light-red-bg);
-    color: var(--button-color);
-    border: none;
-    border-radius: 5px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s ease, color 0.3s ease;
-}
-
-.clear-all-btn:hover {
-    background-color: var(--clear-all-hover-bg);
-}
-
-.appearance-section {
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    justify-content: flex-end;
-}
-
-.appearance-section label {
-    color: var(--header-color);
-    font-weight: 500;
-}
-
-.appearance-section select {
-    padding: 0.5rem;
-    border: 1px solid var(--input-border);
-    border-radius: 5px;
-    background: var(--input-bg);
-    color: var(--input-color);
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.png?v=1" type="image/png">
+    <script>
+        // Immediately apply theme from localStorage to prevent FOUC
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>To-Do List</h1>
+        </div>
+        <div class="appearance-section">
+            <label for="appearance">Appearance:</label>
+            <select id="appearance">
+                <option value="light">Light Mode</option>
+                <option value="dark">Dark Mode</option>
+            </select>
+            <button id="clearAll" class="clear-all-btn">Clear All</button>
+        </div>
+        <div class="input-section">
+            <input type="text" id="taskInput" placeholder="Add a new task...">
+            <input type="date" id="taskDate">
+            <button id="addTask">Add</button>
+        </div>
+        <ul id="taskList">
+            <!-- Tasks will be added here dynamically -->
+        </ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
