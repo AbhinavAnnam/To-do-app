@@ -1,34 +1,35 @@
 :root {
-    --bg-color: #f5f5f5;
-    --container-bg: #fff;
-    --container-border: #A0AF84;
-    --shadow-color: rgba(74, 102, 112, 0.08);
-    --header-color: #4A6670;
-    --input-border: rgba(74, 102, 112, 0.2);
-    --input-bg: #C3B59F;
-    --input-color: #4A6670;
-    --input-focus-border: #A0AF84;
-    --input-focus-shadow: rgba(160, 175, 132, 0.3);
-    --button-bg: #A0AF84;
-    --button-color: #fff;
-    --button-hover-bg: #668F80;
-    --task-item-bg: #668F80;
-    --task-item-hover-bg: #f0f0f0;
-    --task-item-completed-bg: #e8f5e9;
-    --task-item-completed-text: #666;
-    --task-item-highlight-bg: #b7d3c6;
-    --checkbox-accent: #4A6670;
-    --delete-btn-bg: #ff5252;
-    --delete-btn-hover-bg: #ff1744;
-    --edit-btn-bg: #668F80;
-    --edit-btn-hover-bg: #4A6670;
-    --save-btn-bg: #A0AF84;
-    --save-btn-hover-bg: #799a6c;
-    --cancel-btn-bg: #4A6670;
-    --cancel-btn-hover-bg: #3b505c;
-    --task-date-color: #4A6670;
-    --light-red-bg: #ff8a80;
-    --clear-all-hover-bg: #e57373;
+    --bg-color: #F2F5F7; /* Very light blue-gray background */
+    --container-bg: #FFFFFF; /* Pure white container */
+    --container-border: #D3DCE2; /* Light blue-gray border */
+    --shadow-color: rgba(45, 55, 72, 0.1); /* Subtle dark shadow */
+    --header-color: #2D3748; /* Dark blue-gray for text */
+    --input-border: #CBD5E0; /* Light gray-blue input border */
+    --input-bg: #F9FAFB; /* Very light off-white input background */
+    --input-color: #2D3748; /* Dark blue-gray input text */
+    --input-focus-border: #63B3ED; /* Vibrant light blue for input focus */
+    --input-focus-shadow: rgba(99, 179, 237, 0.3); /* Transparent light blue focus shadow */
+    --button-bg: #48BB78; /* Vibrant green for primary buttons */
+    --button-color: #FFFFFF; /* White button text */
+    --button-hover-bg: #38A169; /* Darker vibrant green for button hover */
+    --task-item-bg: #EDF2F7; /* Very light blue-gray for task item background */
+    --task-item-hover-bg: #E2E8F0; /* Slightly darker blue-gray for task item hover */
+    --task-item-completed-bg: #D4EDDA; /* Very light green for completed tasks */
+    --task-item-completed-text: #6B7280; /* Medium gray for completed text */
+    --task-primary-text-color: #2D3748; /* Dark text for task items */
+    --task-item-highlight-bg: #CCE0D4; /* Very light subtle green for new task highlight */
+    --checkbox-accent: #48BB78; /* Vibrant green for checkbox accent */
+    --delete-btn-bg: #EF4444; /* Brighter red for delete button */
+    --delete-btn-hover-bg: #DC2626; /* Darker red for delete button hover */
+    --edit-btn-bg: #6B7280; /* Medium gray for edit button */
+    --edit-btn-hover-bg: #4A5568; /* Darker medium gray for edit button hover */
+    --save-btn-bg: #48BB78; /* Vibrant green for save button (matches add) */
+    --save-btn-hover-bg: #38A169; /* Darker vibrant green for save button hover */
+    --cancel-btn-bg: #A0AEC0; /* Slightly darker gray-blue for cancel button */
+    --cancel-btn-hover-bg: #718096; /* Darker gray-blue for cancel button hover */
+    --task-date-color: #4A5568; /* Darker blue-gray for task date */
+    --light-red-bg: #E53E3E; /* Slightly darker red for clear all button */
+    --clear-all-hover-bg: #C53030; /* Darker red for clear all hover */
 }
 
 .dark-mode {
@@ -49,6 +50,7 @@
     --task-item-hover-bg: #3a3a3a;
     --task-item-completed-bg: #333333;
     --task-item-completed-text: #aaaaaa;
+    --task-primary-text-color: #e0e0e0; /* Changed to a better visible light gray */
     --task-item-highlight-bg: #4a4a4a;
     --checkbox-accent: #666666;
     --delete-btn-bg: #cc3333;
@@ -60,8 +62,8 @@
     --cancel-btn-bg: #555555;
     --cancel-btn-hover-bg: #444444;
     --task-date-color: #bbd0e0;
-    --light-red-bg: #b03a3a;
-    --clear-all-hover-bg: #962828;
+    --light-red-bg: #A02B2B; /* Slightly darker red for clear all button in dark mode */
+    --clear-all-hover-bg: #8B1E1E; /* Darker red for clear all hover in dark mode */
 }
 
 /* Ensure the calendar icon is visible in dark mode */
@@ -167,7 +169,7 @@ button:hover {
     border-radius: 5px;
     margin-bottom: 0.5rem;
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-    color: var(--button-color);
+    color: var(--task-primary-text-color);
     box-shadow: 0 1px 4px var(--shadow-color);
     flex-wrap: wrap;
     gap: 0.8rem;
