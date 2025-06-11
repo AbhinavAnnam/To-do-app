@@ -37,7 +37,7 @@
     --container-bg: #222222;
     --container-border: #444444;
     --shadow-color: rgba(0, 0, 0, 0.5);
-    --header-color: #e0e0e0;
+    --header-color: #ffffff; /* Brighter for better visibility */
     --input-border: rgba(220, 220, 220, 0.2);
     --input-bg: #1c1c1c;
     --input-color: #f0f0f0;
@@ -64,6 +64,16 @@
     --task-date-color: #bbd0e0;
     --light-red-bg: #A02B2B; /* Slightly darker red for clear all button in dark mode */
     --clear-all-hover-bg: #8B1E1E; /* Darker red for clear all hover in dark mode */
+}
+
+.dark-mode .input-section input::placeholder {
+    color: #cccccc; /* Make placeholder text clearer in dark mode */
+    opacity: 1; /* Ensure full opacity */
+}
+
+.appearance-section label {
+    color: var(--header-color);
+    font-weight: bold; /* Make the label bolder */
 }
 
 /* Ensure the calendar icon is visible in dark mode */
@@ -325,15 +335,27 @@ button:hover {
 .appearance-section {
     margin-bottom: 1rem;
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    justify-content: flex-end;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0.8rem;
 }
 
-.appearance-section label {
-    color: var(--header-color);
-    font-weight: 500;
+.filter-sort-controls {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.filter-sort-controls select {
+    flex: 1;
+    min-width: 0;
+}
+
+.theme-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 .appearance-section select {
@@ -380,6 +402,23 @@ button:hover {
         font-size: 0.75rem;
         padding: 0.35rem 0.7rem;
     }
+
+    .appearance-section {
+        gap: 0.6rem;
+    }
+
+    .filter-sort-controls {
+        flex-direction: column;
+    }
+
+    .theme-controls {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .appearance-section select {
+        width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -393,10 +432,9 @@ button:hover {
         flex: 1 1 100%;
     }
 
-    .appearance-section {
+    .theme-controls {
         flex-direction: column;
-        align-items: flex-end;
-        gap: 0.5rem;
+        align-items: stretch;
     }
 
     .appearance-section select,
@@ -443,6 +481,16 @@ button:hover {
 
     .task-date-display {
         /* No margin-left here as it was already removed */
+    }
+
+    .filter-sort-controls,
+    .theme-controls {
+        flex-direction: column;
+    }
+
+    .appearance-section select,
+    .clear-all-btn {
+        width: 100%;
     }
 }
 
