@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskList = document.getElementById('taskList');
     const taskDateInput = document.getElementById('taskDate');
     const appearanceSelect = document.getElementById('appearance');
+    const filterSelect = document.getElementById('filterTasks');
+    const sortSelect = document.getElementById('sortTasks');
 
     // Load tasks from localStorage
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -35,6 +37,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to save tasks to localStorage
     const saveTasks = () => {
         localStorage.setItem('tasks', JSON.stringify(tasks));
+    };
+
+    // Function to filter tasks
+    const filterTasks = (tasks) => {
+        const filterValue = filterSelect.value;
+        switch (filterValue) {
+            case 'active':
+                return tasks.filter(task => !task.completed);
+            case 'completed':
+                return tasks.filter(task => task.completed);
+            default:
+                return tasks;
+        }
+    };
+
+    // Function to sort tasks
+    const sortTasks = (tasks) => {
+        const sortValue = sortSelect.value;
+        return [...tasks].sort((a, b) => {
+            switch (sortValue) {
+                case 'date-asc':
+                    return new Date(a.date) - new Date(b.date);
+                case 'date-desc':
+                    return new Date(b.date) - new Date(a.date);
+                case 'text-asc':
+                    return a.text.localeCompare(b.text);
+                case 'text-desc':
+                    return b.text.localeCompare(a.text);
+                default:
+                    return 0;
+            }
+        });
     };
 
     // Function to create a new task element
@@ -154,7 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderTasks = (newTaskId = null) => {
         taskList.innerHTML = '';
         
-        tasks.forEach(task => {
+        // Apply filtering and sorting
+        let filteredTasks = filterTasks(tasks);
+        let sortedTasks = sortTasks(filteredTasks);
+        
+        sortedTasks.forEach(task => {
             const taskElement = createTaskElement(task);
             if (newTaskId && task.id === newTaskId) {
                 taskElement.classList.add('task-item-new');
@@ -248,6 +286,10 @@ document.addEventListener('DOMContentLoaded', () => {
     appearanceSelect.addEventListener('change', (e) => {
         applyTheme(e.target.value);
     });
+
+    // Add event listeners for filter and sort
+    filterSelect.addEventListener('change', () => renderTasks());
+    sortSelect.addEventListener('change', () => renderTasks());
 
     // Initial render
     renderTasks();
